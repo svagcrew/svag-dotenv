@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  dotenv:
+    specifier: ^16.4.5
+    version: 16.4.5
+
 devDependencies:
   '@types/jest':
     specifier: ^29.5.12
@@ -22,7 +27,7 @@ devDependencies:
     version: 9.0.11
   jest:
     specifier: 30.0.0-alpha.4
-    version: 30.0.0-alpha.4(@types/node@20.12.12)
+    version: 30.0.0-alpha.4
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
@@ -1516,6 +1521,11 @@ packages:
       path-type: 4.0.0
     dev: true
 
+  /dotenv@16.4.5:
+    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
+    engines: {node: '>=12'}
+    dev: false
+
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
@@ -2296,7 +2306,7 @@ packages:
       - supports-color
     dev: true
 
-  /jest-cli@30.0.0-alpha.4(@types/node@20.12.12):
+  /jest-cli@30.0.0-alpha.4:
     resolution: {integrity: sha512-GoXlVJ7UU6MuWjFjAJqHFvO/tzRKpQgw08XFaqtNiLzPHtXK4Spi0tkBcr8M98NhUYYPGYSFwO7nevymp0OmYQ==}
     engines: {node: ^16.10.0 || ^18.12.0 || >=20.0.0}
     hasBin: true
@@ -2699,7 +2709,7 @@ packages:
       supports-color: 8.1.1
     dev: true
 
-  /jest@30.0.0-alpha.4(@types/node@20.12.12):
+  /jest@30.0.0-alpha.4:
     resolution: {integrity: sha512-8GerI17cOfl6AtmlRhzFoMctula9bbUUV67eaAOl58BkIDGqDHoVASjArRRqg/cF2iFnSwwnZ5W6S5JW00j/rg==}
     engines: {node: ^16.10.0 || ^18.12.0 || >=20.0.0}
     hasBin: true
@@ -2712,7 +2722,7 @@ packages:
       '@jest/core': 30.0.0-alpha.4
       '@jest/types': 30.0.0-alpha.4
       import-local: 3.1.0
-      jest-cli: 30.0.0-alpha.4(@types/node@20.12.12)
+      jest-cli: 30.0.0-alpha.4
     transitivePeerDependencies:
       - '@types/node'
       - babel-plugin-macros
@@ -3600,7 +3610,7 @@ packages:
       '@babel/core': 7.24.5
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 30.0.0-alpha.4(@types/node@20.12.12)
+      jest: 30.0.0-alpha.4
       jest-util: 29.7.0
       json5: 2.2.3
       lodash.memoize: 4.1.2
