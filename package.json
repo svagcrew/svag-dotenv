@@ -24,7 +24,7 @@
     "./dist/**/*"
   ],
   "scripts": {
-    "build": "pnpm rimraf dist && pnpm tsc --project tsconfig.json && pnpm tsc-alias --project tsconfig.json && pnpm tsc --project tsconfig.cjs.json && pnpm tsc-alias --project tsconfig.cjs.json",
+    "build": "pnpm rimraf dist && pnpm tsc --project tsconfig.build.json && pnpm tsc-alias --project tsconfig.build.json && pnpm tsc --project tsconfig.build.cjs.json && pnpm tsc-alias --project tsconfig.build.cjs.json",
     "dev": "svag-ts dev",
     "lint": "svag-lint lint",
     "prepare": "husky",
