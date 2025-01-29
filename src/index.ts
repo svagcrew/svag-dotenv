@@ -1,7 +1,7 @@
 /* eslint-disable n/no-process-env */
 import dotenv from 'dotenv'
-import fs from 'fs'
-import path from 'path'
+import * as fs from 'fs'
+import * as path from 'path'
 
 const findFilePath = ({ cwd, lastPathPart }: { cwd: string; lastPathPart: string }): string | null => {
   const maybeEnvFilePath = path.join(cwd, lastPathPart)

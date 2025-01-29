@@ -17,7 +17,17 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "./dist/index.js",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js",
+      "default": "./dist/esm/index.js"
+    }
+  },
+  "type": "module",
   "files": [
     "./src/**/*",
     "./dist/**/*"
@@ -27,7 +37,7 @@
     "dev": "svag-ts dev",
     "watch": "svag-ts watch",
     "types": "svag-ts types",
-    "build": "svag-ts build",
+    "build": "pnpm rimraf dist && pnpm tsc --project tsconfig.json && pnpm tsc-alias --project tsconfig.json && pnpm tsc --project tsconfig.cjs.json && pnpm tsc-alias --project tsconfig.cjs.json",
     "start": "svag-ts start",
     "lint": "svag-lint lint",
     "test": "svag-jest test",
@@ -51,7 +61,6 @@
     "tsc-alias": "^1.8.10",
     "typescript": "^5.4.5"
   },
-  "type": "module",
   "dependencies": {
     "dotenv": "^16.4.5"
   }
