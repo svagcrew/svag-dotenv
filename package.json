@@ -1,6 +1,6 @@
 {
   "name": "svag-dotenv",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "homepage": "https://github.com/svagcrew/svag-dotenv",
   "repository": {
     "type": "git",
@@ -17,31 +17,25 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/cjs/index.js",
-      "import": "./dist/esm/index.js",
-      "default": "./dist/esm/index.js"
-    }
-  },
-  "type": "module",
+  "main": "./dist/cjs/index.js",
   "files": [
     "./src/**/*",
     "./dist/**/*"
   ],
   "scripts": {
-    "prettify": "svag-prettier prettify",
-    "dev": "svag-ts dev",
-    "watch": "svag-ts watch",
-    "types": "svag-ts types",
     "build": "pnpm rimraf dist && pnpm tsc --project tsconfig.json && pnpm tsc-alias --project tsconfig.json && pnpm tsc --project tsconfig.cjs.json && pnpm tsc-alias --project tsconfig.cjs.json",
-    "start": "svag-ts start",
+    "dev": "svag-ts dev",
     "lint": "svag-lint lint",
+    "prepare": "husky",
+    "prettify": "svag-prettier prettify",
+    "start": "svag-ts start",
     "test": "svag-jest test",
-    "prepare": "husky"
+    "types": "svag-ts types",
+    "watch": "svag-ts watch"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
@@ -61,7 +55,13 @@
     "tsc-alias": "^1.8.10",
     "typescript": "^5.4.5"
   },
-  "dependencies": {
-    "dotenv": "^16.4.5"
-  }
+  "exports": {
+    ".": {
+      "default": "./dist/esm/index.js",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "type": "module",
+  "types": "./dist/esm/index.d.ts"
 }
