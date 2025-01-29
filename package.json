@@ -17,14 +17,29 @@
   "publishConfig": {
     "access": "public"
   },
-  "module": "./dist/esm/index.js",
-  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.mjs",
+  "main": "./dist/cjs/index.cjs",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "require": "./dist/cjs/index.cjs",
+      "import": "./dist/esm/index.mjs",
+      "default": "./dist/cjs/index.cjs"
+    }
+  },
+  "type": "module",
   "files": [
     "./src/**/*",
     "./dist/**/*"
   ],
   "scripts": {
-    "build": "pnpm rimraf dist && pnpm tsc --project tsconfig.build.json && pnpm tsc-alias --project tsconfig.build.json && pnpm tsc --project tsconfig.build.cjs.json && pnpm tsc-alias --project tsconfig.build.cjs.json",
+    "build": "pnpm rimraf dist && pnpm tsc --project tsconfig.build.json && pnpm tsc-alias --project tsconfig.build.json && pnpm tsc --project tsconfig.build.cjs.json && pnpm tsc-alias --project tsconfig.build.cjs.json && pnpm rename-js",
+    "rename-cjs": "rename 'dist/cjs/*.js' 'dist/cjs/{{f}}.cjs'",
+    "rename-cjs-map": "rename 'dist/cjs/*.js.map' 'dist/cjs/{{f}}.cjs.map'",
+    "rename-esm": "rename 'dist/esm/*.js' 'dist/esm/{{f}}.mjs'",
+    "rename-esm-map": "rename 'dist/esm/*.js.map' 'dist/esm/{{f}}.mjs.map'",
+    "rename-js": "pnpm rename-cjs && pnpm rename-cjs-map && pnpm rename-esm && pnpm rename-esm-map",
     "dev": "svag-ts dev",
     "lint": "svag-lint lint",
     "prepare": "husky",
@@ -45,6 +60,7 @@
     "husky": "^9.0.11",
     "jest": "30.0.0-alpha.4",
     "prettier": "^3.2.5",
+    "rename-cli": "^7.0.2",
     "rimraf": "^5.0.7",
     "svag-husky": "^0.1.49",
     "svag-jest": "^0.1.39",
@@ -54,22 +70,5 @@
     "ts-jest": "^29.1.2",
     "tsc-alias": "^1.8.10",
     "typescript": "^5.4.5"
-  },
-  "exports": {
-    ".": {
-      "default": "./dist/cjs/index.js",
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
-    },
-    "./cjs": {
-      "require": "./dist/cjs/index.js",
-      "types": "./dist/cjs/index.d.ts"
-    },
-    "./esm": {
-      "import": "./dist/esm/index.js",
-      "types": "./dist/esm/index.d.ts"
-    }
-  },
-  "type": "module",
-  "types": "./dist/esm/index.d.ts"
+  }
 }
